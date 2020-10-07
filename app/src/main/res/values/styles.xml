@@ -1,0 +1,393 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorBlack</item>
+        <item name="colorAccent">@color/colorBlack</item>
+    </style>
+
+    <style name="Transparent" parent="@style/Theme.AppCompat">
+        <!--Titlebar 없애는 옵션
+            true : Titlebar x
+            false : Titlebar o
+        -->
+        <item name="windowNoTitle">true</item>
+        <!-- 투명정도를 나타내는 색-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+        <!--
+        android:backgroundDimEnabled
+        true - 반투명 검정 /  false - 완전 투명
+        -->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_translucent</item>
+    </style>
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+
+    <style name="PlayerTheme" parent="android:Theme.Holo">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
+
+    <style name="ToolBarStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+
+    <style name="ToolBarButton" parent="Base.TextAppearance.AppCompat.Button">
+        <item name="android:width">35dp</item>
+        <item name="android:height">35dp</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <!--Tabbar Footer-->
+    <style name="BottomNavigationTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/active_tab_color</item>
+        <item name="android:textColorSecondary">@color/inactive_tab_color</item>
+
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!--frag_market_menu UnSel button-->
+    <style name="FragMarketMenuButton" parent="Base.TextAppearance.AppCompat.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">72dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+
+
+
+    <!--2019.05.09 라꾸===================-->
+    <style name="Style_btn_xLargeSize">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="Style_btn_xLargeSize_Bold">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="Style_btn_LargeSize">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="Style_btn_MediumSize">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        =
+    </style>
+
+    <style name="Style_btn_SmallSize">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">13dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+
+    <style name="Style_Tablayout_TextSize" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14.5dp</item>
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+    </style>
+
+    <style name="Style_Tablayout_TextSize2" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">10.5dp</item>
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+    </style>
+
+
+    <style name="Style_Nanum">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+    </style>
+
+    <style name="Style_NanumBold">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+    </style>
+
+
+    <style name="Style_Nanum_20">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">10dp</item>
+    </style>
+    <style name="Style_NanumBold_20">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">10dp</item>
+    </style>
+
+    <style name="Style_Nanum_22">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">11dp</item>
+    </style>
+
+    <style name="Style_NanumBold_22">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">11dp</item>
+    </style>
+
+    <style name="Style_Nanum_24">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="Style_NanumBold_24">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="Style_Nanum_30">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">15dp</item>
+    </style>
+
+    <style name="Style_NanumBold_30">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">15dp</item>
+    </style>
+
+    <style name="Style_Nanum_35">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">17.5dp</item>
+    </style>
+
+    <style name="Style_NanumBold_35">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">17.5dp</item>
+    </style>
+
+    <style name="Style_SideMargin_20">
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+    </style>
+
+    <style name="Style_Nanum_32">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="Style_NanumBold_32">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="Style_Nanum_110">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">55dp</item>
+    </style>
+
+    <style name="Style_NanumBold_110">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">55dp</item>
+    </style>
+
+    <style name="Style_Nanum_100">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">50dp</item>
+    </style>
+
+    <style name="Style_NanumBold_100">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">50dp</item>
+    </style>
+
+    <style name="Style_Nanum_80">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">40dp</item>
+    </style>
+
+    <style name="Style_NanumBold_80">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">40dp</item>
+    </style>
+
+    <style name="Style_Nanum_90">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">45dp</item>
+    </style>
+
+    <style name="Style_NanumBold_90">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">45dp</item>
+    </style>
+
+    <style name="Style_Nanum_26">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <style name="Style_NanumBold_26">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <style name="Style_Nanum_60">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">30dp</item>
+    </style>
+
+    <style name="Style_NanumBold_60">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">30dp</item>
+    </style>
+
+    <style name="Style_Phone_Sp" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="Style_Phone_Sp2" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:paddingBottom">15dp</item>
+    </style>
+
+    <style name="Style_Phone_Sp3" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/gray_999</item>
+    </style>
+
+    <style name="Style_Nanum_28">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="Style_NanumBold_28">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="Style_Nanum_36">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="Style_NanumBold_36">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="Style_Nanum_38">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">19dp</item>
+    </style>
+
+    <style name="Style_NanumBold_38">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">19dp</item>
+    </style>
+
+    <style name="Style_Nanum_58">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">29dp</item>
+    </style>
+
+    <style name="Style_NanumBold_58">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">29dp</item>
+    </style>
+
+    <style name="Style_Nanum_47">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">23.5dp</item>
+    </style>
+
+    <style name="Style_NanumBold_47">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">23.5dp</item>
+    </style>
+
+    <style name="Style_Nanum_140">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">70dp</item>
+    </style>
+
+    <style name="Style_NanumBold_140">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">70dp</item>
+    </style>
+
+    <style name="Style_Nanum_40">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="Style_NanumBold_40">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="Style_Nanum_42">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">21dp</item>
+    </style>
+
+    <style name="Style_NanumBold_42">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">21dp</item>
+    </style>
+
+    <style name="Style_Nanum_48">
+        <item name="android:fontFamily">@font/nanumbarungothic</item>
+        <item name="android:textSize">24dp</item>
+    </style>
+
+    <style name="Style_NanumBold_48">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+        <item name="android:textSize">24dp</item>
+    </style>
+
+    <style name="ThemeSpinner">
+        <!-- Color when pressed -->
+        <item name="colorAccent">#ffa000</item>
+        <!-- Default color for the dropdown arrow and line -->
+        <item name="colorControlNormal">#ffc107</item>
+    </style>
+
+
+    <style name="Style_Layout_Padding">
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

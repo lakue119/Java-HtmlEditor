@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#eb7c94</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="transparency">#00ff0000</color>
+
+    <color name="toolbar_color_default">#ffffff</color>
+    <color name="toolbar_txt_color_default">#666666</color>
+
+    <color name="active_tab_color">#000000</color>
+    <color name="inactive_tab_color">#888888</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#333333</color>
+
+    <color name="gray_666">#666666</color>
+    <color name="gray_999">#999999</color>
+
+    <color name="pink_50">#fef8fa</color>
+    <color name="pink_80">#fdf5f7</color>
+    <color name="pink_100">#fdf2f4</color>
+    <color name="pink_200">#fbe5ea</color>
+    <color name="pink_300">#f9d7df</color>
+    <color name="pink_400">#f7cbd4</color>
+    <color name="pink_500">#f5bdc9</color>
+    <color name="pink_600">#f3b0bf</color>
+    <color name="pink_700">#f1a3b4</color>
+    <color name="pink_800">#ef96a9</color>
+    <color name="pink_900">#ed899e</color>
+    <color name="pink_1000">#eb7c94</color>
+    <color name="pink_1000_trans">#cceb7c94</color>
+
+    <color name="navy_50">#f5f7fa</color>
+    <color name="navy_80">#eff2f7</color>
+    <color name="navy_100">#fdf2f4</color>
+    <color name="navy_200">#d7deeb</color>
+    <color name="navy_300">#c3cde1</color>
+    <color name="navy_400">#afbdd8</color>
+    <color name="navy_500">#9badce</color>
+    <color name="navy_600">#879dc4</color>
+    <color name="navy_700">#738cba</color>
+    <color name="navy_800">#5f7cb1</color>
+    <color name="navy_900">#4b6ba7</color>
+    <color name="navy_1000">#375b9d</color>
+
+    <color name="border_gray">#dddddd</color>
+    <color name="border_black">#111111</color>
+    <color name="border_pink">#eb7c94</color>
+
+    <color name="colorBlack">#111111</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray_d">#ddd</color>
+    <color name="colorGray">#999</color>
+    <color name="colorGray_f8">#f8f8f8</color>
+    <color name="colorTransparency">#00ff0000</color>
+    <color name="colorPink">#EB7C94</color>
+    <color name="colorBlue">#375b9d</color>
+    <color name="colorLightGray">#eeeeee</color>
+    <color name="colorBackGray">#f5f5f5</color>
+    <color name="colorDarkBlue">#254173</color>
+    <color name="colorYellow">#ffbb59</color>
+    <color name="colorLightYellow">#ffff00</color>
+
+    <color name="colorTransGray">#90ffffff</color>
+    <color name="colorTrans90Black">#90000000</color>
+    <color name="colorTrans99Black">#cc000000</color>
+    <color name="colorTransWhite">#99f9f4f9</color>
+
+
+    <color name="red">#aacc0000</color>
+    <color name="background_video_color">#2f3031</color>
+    <color name="background_progress_color">#6C6D6D</color>
+    <color name="progress_color">#aacc0000</color>
+    <color name="line_color">#FF15FF00</color>
+    <color name="shadow_color">#7F000000</color>
+    <color name="line_button">#565758</color>
+    <color name="black_translucent">#50000000</color>
+    <color name="top_bottom">#42BAF8</color>
+</resources>

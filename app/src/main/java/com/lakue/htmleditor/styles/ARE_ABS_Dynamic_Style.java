@@ -1,0 +1,100 @@
+package com.lakue.htmleditor.styles;
+
+import android.content.Context;
+import android.text.Editable;
+import android.text.Spanned;
+
+import com.lakue.htmleditor.span.AreDynamicSpan;
+import com.lakue.htmleditor.util.Util;
+
+public abstract class ARE_ABS_Dynamic_Style<E extends AreDynamicSpan> extends ARE_ABS_Style<E> {
+
+    public ARE_ABS_Dynamic_Style(Context context) {
+        super(context);
+    }
+
+    protected void applyNewStyle(Editable editable, int start, int end, int currentStyle) {
+        E startSpan = null;
+        int startSpanStart = Integer.MAX_VALUE;
+        E endSpan = null;
+        int endSpanStart = -1;
+        int endSpanEnd = -1;
+
+        int detectStart = start;
+        if (start > 0) {
+            detectStart = start - 1;
+        }
+        int detectEnd = end;
+        if (end < editable.length()) {
+            detectEnd = end + 1;
+        }
+
+        E[] existingSpans = editable.getSpans(detectStart, detectEnd, clazzE);
+        if (existingSpans != null && existingSpans.length > 0) {
+            for (E span : existingSpans) {
+                int spanStart = editable.getSpanStart(span);
+
+                if (spanStart < startSpanStart) {
+                    startSpanStart = spanStart;
+                    startSpan = span;
+                }
+
+                if (spanStart >= endSpanStart) {
+                    endSpanStart = spanStart;
+                    endSpan = span;
+                    int thisSpanEnd = editable.getSpanEnd(span);
+                    if (thisSpanEnd > endSpanEnd) {
+                        endSpanEnd = thisSpanEnd;
+                    }
+                }
+            } // End for
+
+            if (startSpan == null || endSpan == null) {
+                Util.log("[ARE_ABS_Dynamic_Style#applyNewStyle] >>>>>>>>>>>>>>> ERROR!! startSpan or endSpan is null");
+                return;
+            }
+
+            if (end > endSpanEnd) {
+                Util.log("This should never happen! TAKE CARE!");
+                endSpanEnd = end;
+            }
+
+            for (E span : existingSpans) {
+                editable.removeSpan(span);
+            }
+
+            int startSpanFeature = startSpan.getDynamicFeature();
+            int endSpanFeature = endSpan.getDynamicFeature();
+
+
+            if (startSpanFeature == currentStyle && endSpanFeature == currentStyle) {
+                editable.setSpan(newSpan(), startSpanStart, endSpanEnd, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+            } else if (startSpanFeature == currentStyle) {
+                editable.setSpan(newSpan(startSpanFeature), startSpanStart, end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                editable.setSpan(newSpan(endSpanFeature), end, endSpanEnd, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+            } else if (endSpanFeature == currentStyle) {
+                editable.setSpan(newSpan(startSpanFeature), startSpanStart, start, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                editable.setSpan(newSpan(endSpanFeature), start, endSpanEnd, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+            } else {
+                editable.setSpan(newSpan(startSpanFeature), startSpanStart, start, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                if (endSpanEnd > end) {
+                    editable.setSpan(newSpan(endSpanFeature), end, endSpanEnd, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+                }
+                editable.setSpan(newSpan(), start, end, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+            }
+        } else {
+            editable.setSpan(newSpan(), start, end, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        }
+    }
+
+    private void logSpans(E[] es) {
+        for (E e : es) {
+            Editable editable = getEditText().getEditableText();
+            int start = editable.getSpanStart(e);
+            int end = editable.getSpanEnd(e);
+            Util.log("start == " + start + ", end == " + end);
+        }
+    }
+
+    protected abstract E newSpan(int feature);
+}

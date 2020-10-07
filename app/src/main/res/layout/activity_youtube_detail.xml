@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:layout_height="match_parent"
+    tools:context=".activity.YoutubeDetailActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorWhite">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/profileToolBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ivClose"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="20dp"
+                        android:src="@drawable/round_keyboard_arrow_left_black_24"
+                        tools:ignore="RtlCompat" />
+
+
+                    <TextView
+                        android:id="@+id/tv_upload_title"
+                        style="@style/Style_Nanum_32"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:text="YouTube"
+                        android:textColor="@color/colorBlack" />
+
+                    <TextView
+                        android:id="@+id/tv_product_tag_success"
+                        style="@style/Style_NanumBold_32"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="20dp"
+                        android:text="완료"
+                        android:textColor="@color/colorBlack" />
+
+
+
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <view
+            android:id="@+id/youtubeView"
+            class="com.google.android.youtube.player.YouTubePlayerView"
+            id="@+id/view"
+            layout_alignParentTop="true"
+            layout_centerHorizontal="true"
+            layout_marginTop="99dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:paddingTop="24dp"
+                android:paddingBottom="8dp"
+                android:id="@+id/tv_title"
+                android:lineSpacingExtra="4dp"
+                style="@style/Style_Nanum_24"
+                android:textColor="@color/colorBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="24dp"
+                android:paddingTop="8dp"
+                android:paddingRight="24dp"
+                android:paddingBottom="24dp">
+
+                <TextView
+                    android:id="@+id/tv_channel"
+                    style="@style/Style_Nanum_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray_999" />
+
+                <TextView
+                    style="@style/Style_Nanum_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="·조회수 "
+                    android:textColor="@color/gray_999" />
+
+                <TextView
+                    android:id="@+id/tv_viewcount"
+                    style="@style/Style_Nanum_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray_999" />
+
+                <TextView
+                    style="@style/Style_Nanum_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="·"
+                    android:textColor="@color/gray_999" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    style="@style/Style_Nanum_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray_999" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_marginTop="8dp"
+                android:background="@color/colorGray_d"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp"/>
+
+            <TextView
+                android:lineSpacingExtra="5dp"
+                android:textColorLink="#1d73c8"
+                style="@style/Style_Nanum_24"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:id="@+id/tv_description"
+                android:autoLink="all"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

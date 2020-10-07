@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:are="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/profileToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/ivClose"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/round_keyboard_arrow_left_black_36"
+                    tools:ignore="RtlCompat" />
+
+
+                <TextView
+                    android:id="@+id/tv_upload_title"
+                    style="@style/Style_Nanum_32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:text="블로그"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/tv_product_tag_success"
+                    style="@style/Style_Nanum_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="20dp"
+                    android:text="미리보기"
+                    android:textColor="@color/colorBlack" />
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_preview"-->
+                <!--                    style="@style/Style_NanumBold_32"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_centerVertical="true"-->
+                <!--                    android:layout_toStartOf="@+id/tv_product_tag_success"-->
+                <!--                    android:layout_toLeftOf="@+id/tv_product_tag_success"-->
+                <!--                    android:layout_toEndOf="@+id/tv_upload_title"-->
+                <!--                    android:layout_toRightOf="@+id/tv_upload_title"-->
+                <!--                    android:text="미리보기"-->
+                <!--                    android:textColor="@color/colorBlack" />-->
+
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsc_scrollview"
+        android:fitsSystemWindows="true"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.lakue.htmleditor.AREditText
+            android:padding="16dp"
+            android:gravity="top"
+            android:background="@color/colorWhite"
+            android:layout_weight="1"
+            android:id="@+id/are_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="내용을 입력해보세요"
+            />
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+    <com.lakue.htmleditor.styles.toolbar.ARE_Toolbar
+        android:id="@+id/are_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+</LinearLayout>

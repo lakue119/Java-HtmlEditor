@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">dmaps.daum.net</domain>
+        <domain includeSubdomains="true">c.brightcove.com</domain>
+        <domain includeSubdomains="true">solutions.brightcove.com</domain>
+        <domain includeSubdomains="true">ebookfrenzy.com</domain>
+        <domain includeSubdomains="true">secure.example.com</domain>
+        <domain includeSubdomains="true">maps.daum-img.net</domain>
+        <domain includeSubdomains="true">i.ytimg.com</domain>
+    </domain-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">amazon.com</domain>
+    </domain-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">nytimes.com</domain>
+    </domain-config>
+</network-security-config>
+
