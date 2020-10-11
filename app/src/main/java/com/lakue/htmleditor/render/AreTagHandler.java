@@ -45,12 +45,4 @@ public class AreTagHandler implements Html.TagHandler {
         OL ol = new OL();
 
     }
-
-    private static void startLI() {
-
-    }
-
-    private static void startUL() {
-
-    }
 }

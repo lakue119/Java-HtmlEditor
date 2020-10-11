@@ -23,8 +23,6 @@ public class ImageSelectDialog {
 
     private View mRootView;
 
-    private Dialog mDialog;
-
     private IARE_Image mAreImage;
 
     private int mRequestCode;
@@ -34,10 +32,7 @@ public class ImageSelectDialog {
         mAreImage = areImage;
         mRequestCode = requestCode;
         mRootView = initView();
-        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-        builder.setTitle("Insert Image");
-        builder.setView(mRootView);
-        mDialog = builder.create();
+        openImagePicker();
     }
 
     private View initView() {
@@ -67,15 +62,10 @@ public class ImageSelectDialog {
         return view;
     }
 
-    public void show() {
-        mDialog.show();
-    }
-
     private void openImagePicker() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         ((Activity) this.mContext).startActivityForResult(intent, mRequestCode);
-        mDialog.dismiss();
     }
 
     private void insertInternetImage() {
@@ -84,7 +74,6 @@ public class ImageSelectDialog {
         if (imageUrl.startsWith("http")
                 &&  (imageUrl.endsWith("png") || imageUrl.endsWith("jpg") || imageUrl.endsWith("jpeg"))) {
             mAreImage.insertImage(imageUrl, AreImageSpan.ImageType.URL);
-            mDialog.dismiss();
         } else {
             Util.toast(mContext, "Not a valid image");
         }

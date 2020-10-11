@@ -33,24 +33,9 @@ import java.util.List;
 
 public class ARE_Toolbar extends LinearLayout {
 
-    /**
-     * Request code for selecting an image.
-     */
     public static final int REQ_IMAGE = 1;
-
-    /**
-     * Request code for choosing a people to @.
-     */
     public static final int REQ_YOUTUBE = 2;
-
-    /**
-     * Request code for choosing a video.
-     */
     public static final int REQ_VIDEO_CHOOSE = 3;
-
-    /**
-     * Request code for inserting a video
-     */
     public static final int REQ_VIDEO = 4;
 
     public static final int REQ_YOUTUBE_DETAIL = 5;
@@ -59,76 +44,20 @@ public class ARE_Toolbar extends LinearLayout {
 
     private AREditText mEditText;
 
-    /**
-     * Supported styles list.
-     */
     private ArrayList<IARE_Style> mStylesList = new ArrayList<>();
 
-    /**
-     * Video Style
-     */
     private ARE_Video mVideoStyle;
-
-    /**
-     * Font-size Style
-     */
     private ARE_FontSize mFontsizeStyle;
-    /**
-     * Bold Style
-     */
     private ARE_Bold mBoldStyle;
-
-    /**
-     * Align left.
-     */
     private ARE_Alignment mAlignLeft;
-
-//	/**
-//	 * Align center.
-//	 */
-//	private ARE_Alignment mAlignCenter;
-//
-//	/**
-//	 * Align right.
-//	 */
-//	private ARE_Alignment mAlignRight;
-
-    /**
-     * Insert image style.
-     */
     private ARE_Image mImageStyle;
-
     private ARE_Youtube mYoutubeStyle;
 
-
-    /**
-     * Absolute font size button.
-     */
     private ImageView mFontsizeImageView1;
-
-    /**
-     * Bold button.
-     */
     private ImageView mBoldImageView;
-
-    /**
-     * Align left.
-     */
     private ImageView mRteAlignLeft;
-
-    /**
-     * Insert image button.
-     */
     private ImageView mRteInsertImage;
-
-    /**
-     * Insert video button.
-     */
     private ImageView mRteInsertVideo;
-
-    /**
-     * @ mention image button.
-     */
     private ImageView mYoutube;
 
     public ARE_Toolbar(Context context) {
@@ -174,17 +103,12 @@ public class ARE_Toolbar extends LinearLayout {
 
     }
 
-    /**
-     *
-     */
     private void initStyles() {
         this.mFontsizeStyle = new ARE_FontSize(this.mFontsizeImageView1, this);
 
 
         this.mBoldStyle = new ARE_Bold(this.mBoldImageView);
         this.mAlignLeft = new ARE_Alignment(this.mRteAlignLeft, this);
-//		this.mAlignCenter = new ARE_Alignment(this.mRteAlignCenter, Alignment.ALIGN_CENTER, this);
-//		this.mAlignRight = new ARE_Alignment(this.mRteAlignRight, Alignment.ALIGN_OPPOSITE, this);
         this.mImageStyle = new ARE_Image(this.mRteInsertImage);
         this.mVideoStyle = new ARE_Video(this.mRteInsertVideo);
         this.mYoutubeStyle = new ARE_Youtube(this.mYoutube);
@@ -192,8 +116,6 @@ public class ARE_Toolbar extends LinearLayout {
         this.mStylesList.add(this.mFontsizeStyle);
         this.mStylesList.add(this.mBoldStyle);
         this.mStylesList.add(this.mAlignLeft);
-//		this.mStylesList.add(this.mAlignCenter);
-//		this.mStylesList.add(this.mAlignRight);
         this.mStylesList.add(this.mImageStyle);
         this.mStylesList.add(this.mVideoStyle);
         this.mStylesList.add(this.mYoutubeStyle);
@@ -232,10 +154,6 @@ public class ARE_Toolbar extends LinearLayout {
         return this.mStylesList;
     }
 
-
-    /**
-     * Open Video player page
-     */
     public void openVideoPlayer(Uri uri) {
         Intent intent = new Intent();
         intent.setClass(mContext, ActivityAreVideoPlayer.class);
@@ -243,13 +161,6 @@ public class ARE_Toolbar extends LinearLayout {
         mContext.startActivityForResult(intent, REQ_VIDEO);
     }
 
-    /**
-     * On activity result.
-     *
-     * @param requestCode
-     * @param resultCode
-     * @param data
-     */
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         mEmojiShownNow = false;
         if (resultCode == Activity.RESULT_OK) {
@@ -280,8 +191,6 @@ public class ARE_Toolbar extends LinearLayout {
         }
     }
 
-    /* -------- START: Keep it at the bottom of the class.. Keyboard and emoji ------------ */
-    /* -------- START: Keep it at the bottom of the class.. Keyboard and emoji ------------ */
     private void initKeyboard() {
         final Window window = mContext.getWindow();
         final View rootView = window.getDecorView().findViewById(android.R.id.content);

@@ -14,19 +14,12 @@ public class ARE_Bold extends ARE_ABS_Style<AreBoldSpan> {
     private boolean mBoldChecked;
 
     private AREditText mEditText;
-
-    /**
-     * @param boldImage
-     */
     public ARE_Bold(ImageView boldImage) {
         super(boldImage.getContext());
         this.mBoldImageView = boldImage;
         setListenerForImageView(this.mBoldImageView);
     }
 
-    /**
-     * @param editText
-     */
     public void setEditText(AREditText editText) {
         this.mEditText = editText;
     }

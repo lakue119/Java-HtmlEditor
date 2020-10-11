@@ -49,9 +49,6 @@ public class ARE_Youtube implements IARE_Style {
 
     private static int sWidth = 0;
 
-    /**
-     * @param imageView the emoji image view
-     */
     public ARE_Youtube(ImageView imageView) {
         this.mInsertVideoImageView = imageView;
         this.mContext = imageView.getContext();
@@ -73,18 +70,11 @@ public class ARE_Youtube implements IARE_Style {
         });
     } // #End of setListenerForImageView(..)
 
-    /**
-     * Open system image chooser page.
-     */
     private void openVideoChooser() {
         Intent intent = new Intent(mContext, YoutubeSearchActivity.class);
         ((Activity) this.mContext).startActivityForResult(intent, ARE_Toolbar.REQ_YOUTUBE);
     }
 
-
-    /**
-     *
-     */
     public void insertYoutube(final String id, final String videoUrl) {
 //        this.mEditText.useSoftwareLayerOnAndroid8();
         AsyncGettingBitmapFromUrl asyncGettingBitmapFromUrl = new AsyncGettingBitmapFromUrl();
@@ -156,11 +146,6 @@ public class ARE_Youtube implements IARE_Style {
         }
     }
 
-    /**
-     * 根据图片的Uri获取图片的绝对路径(适配多种API)
-     *
-     * @return 如果Uri对应的图片存在, 那么返回该图片的绝对路径, 否则返回null
-     */
     public static String getRealPathFromUri(Context context, Uri uri) {
         int sdkVersion = Build.VERSION.SDK_INT;
         if (sdkVersion < 11) return getRealPathFromUri_BelowApi11(context, uri);
@@ -168,9 +153,6 @@ public class ARE_Youtube implements IARE_Style {
         else return getRealPathFromUri_AboveApi19(context, uri);
     }
 
-    /**
-     * 适配api19以上,根据uri获取图片的绝对路径
-     */
     @TargetApi(Build.VERSION_CODES.KITKAT)
     private static String getRealPathFromUri_AboveApi19(Context context, Uri uri) {
         String filePath = null;
@@ -191,9 +173,6 @@ public class ARE_Youtube implements IARE_Style {
         return filePath;
     }
 
-    /**
-     * 适配api11-api18,根据uri获取图片的绝对路径
-     */
     private static String getRealPathFromUri_Api11To18(Context context, Uri uri) {
         String filePath = null;
         String[] projection = {MediaStore.Images.Media.DATA};
@@ -208,9 +187,6 @@ public class ARE_Youtube implements IARE_Style {
         return filePath;
     }
 
-    /**
-     * 适配api11以下(不包括api11),根据uri获取图片的绝对路径
-     */
     private static String getRealPathFromUri_BelowApi11(Context context, Uri uri) {
         String filePath = null;
         String[] projection = {MediaStore.Images.Media.DATA};

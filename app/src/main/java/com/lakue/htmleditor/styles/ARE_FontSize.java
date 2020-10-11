@@ -26,9 +26,6 @@ public class ARE_FontSize extends ARE_ABS_Dynamic_Style<AreFontSizeSpan>{
 
     int count =1;
 
-    /**
-     * @param fontSizeImage
-     */
     public ARE_FontSize(ImageView fontSizeImage, ARE_Toolbar toolbar) {
         super(fontSizeImage.getContext());
         this.mToolbar = toolbar;
@@ -39,10 +36,6 @@ public class ARE_FontSize extends ARE_ABS_Dynamic_Style<AreFontSizeSpan>{
         mFontsizeImageView.setPadding(dp,dp,dp,dp);
     }
 
-
-    /**
-     * @param editText
-     */
     public void setEditText(AREditText editText) {
         this.mEditText = editText;
     }

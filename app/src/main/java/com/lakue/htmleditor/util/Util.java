@@ -30,26 +30,14 @@ import android.widget.Toast;
 
 public class Util {
 
-    /**
-     * Toast message.
-     */
     public static void toast(Context context, String msg) {
         Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
     }
 
-    /**
-     * @param s
-     */
     public static void log(String s) {
         Log.d("CAKE", s);
     }
 
-    /**
-     * Returns the line number of current cursor.
-     *
-     * @param editText
-     * @return
-     */
     public static int getCurrentCursorLine(EditText editText) {
         int selectionStart = Selection.getSelectionStart(editText.getText());
         Layout layout = editText.getLayout();
@@ -64,12 +52,6 @@ public class Util {
         return -1;
     }
 
-    /**
-     * Returns the selected area line numbers.
-     *
-     * @param editText
-     * @return
-     */
     public static int[] getCurrentSelectionLines(EditText editText) {
         Editable editable = editText.getText();
         int selectionStart = Selection.getSelectionStart(editable);
@@ -90,12 +72,6 @@ public class Util {
         return lines;
     }
 
-    /**
-     * Returns the line start position of the current line (which cursor is focusing now).
-     *
-     * @param editText
-     * @return
-     */
     public static int getThisLineStart(EditText editText, int currentLine) {
         Layout layout = editText.getLayout();
         int start = 0;
@@ -121,12 +97,6 @@ public class Util {
         return start;
     }
 
-    /**
-     * Returns the line end position of the current line (which cursor is focusing now).
-     *
-     * @param editText
-     * @return
-     */
     public static int getThisLineEnd(EditText editText, int currentLine) {
         Layout layout = editText.getLayout();
         if (-1 != currentLine) {
@@ -135,13 +105,6 @@ public class Util {
         return -1;
     }
 
-    /**
-     * Gets the pixels by the given number of dp.
-     *
-     * @param context
-     * @param dp
-     * @return
-     */
     public static int getPixelByDp(Context context, int dp) {
         int pixels = dp;
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -150,12 +113,6 @@ public class Util {
         return pixels;
     }
 
-    /**
-     * Returns the screen width and height.
-     *
-     * @param context
-     * @return
-     */
     public static int[] getScreenWidthAndHeight(Context context) {
         Point outSize = new Point();
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -168,14 +125,6 @@ public class Util {
         return widthAndHeight;
     }
 
-    /**
-     * Returns the color in string format.
-     *
-     * @param intColor
-     * @param containsAlphaChannel
-     * @param removeAlphaFromResult
-     * @return
-     */
     public static String colorToString(int intColor, boolean containsAlphaChannel, boolean removeAlphaFromResult) {
         String strColor = String.format("#%06X", 0xFFFFFF & intColor);
         if (containsAlphaChannel) {
@@ -235,9 +184,6 @@ public class Util {
 
     public static class GetPathFromUri4kitkat {
 
-        /**
-         * For Android 4.4
-         */
         @SuppressLint("NewApi")
         public static String getPath(final Context context, final Uri uri) {
 
@@ -302,20 +248,6 @@ public class Util {
             return null;
         }
 
-        /**
-         * Get the value of the data column for this Uri. This is useful for
-         * MediaStore Uris, and other file-based ContentProviders.
-         *
-         * @param context
-         *            The context.
-         * @param uri
-         *            The Uri to query.
-         * @param selection
-         *            (Optional) Filter used in the query.
-         * @param selectionArgs
-         *            (Optional) Selection arguments used in the query.
-         * @return The value of the _data column, which is typically a file path.
-         */
         public static String getDataColumn(Context context, Uri uri, String selection,
                                            String[] selectionArgs) {
 
@@ -337,29 +269,14 @@ public class Util {
             return null;
         }
 
-        /**
-         * @param uri
-         *            The Uri to check.
-         * @return Whether the Uri authority is ExternalStorageProvider.
-         */
         public static boolean isExternalStorageDocument(Uri uri) {
             return "com.android.externalstorage.documents".equals(uri.getAuthority());
         }
 
-        /**
-         * @param uri
-         *            The Uri to check.
-         * @return Whether the Uri authority is DownloadsProvider.
-         */
         public static boolean isDownloadsDocument(Uri uri) {
             return "com.android.providers.downloads.documents".equals(uri.getAuthority());
         }
 
-        /**
-         * @param uri
-         *            The Uri to check.
-         * @return Whether the Uri authority is MediaProvider.
-         */
         public static boolean isMediaDocument(Uri uri) {
             return "com.android.providers.media.documents".equals(uri.getAuthority());
         }

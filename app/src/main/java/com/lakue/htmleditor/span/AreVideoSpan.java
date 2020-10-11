@@ -37,13 +37,6 @@ public class AreVideoSpan extends ImageSpan implements ARE_Span, ARE_Clickable_S
         StringBuffer htmlBuffer = new StringBuffer("<video width=\"100%\" id=\"video_3046\" autoplay=\"\" muted=\"\" playsinline=\"\" controls=\"\">\n" +
                 "            <source src=\"https://s3.ap-northeast-2.amazonaws.com/fps3bucket/user_contents/4919F0C5D9B109E1570443422.mov\" type=\"video/mp4\">\n" +
                 "        </video>");
-//		String path = TextUtils.isEmpty(mVideoUrl) ? mVideoPath : mVideoUrl;
-//		htmlBuffer.append(path);
-//		htmlBuffer.append("\" uri=\"");
-//		htmlBuffer.append(mVideoPath);
-//		htmlBuffer.append("\" controls=\"controls\">");
-////		htmlBuffer.append("您的浏览器不支持 video 标签。");
-//		htmlBuffer.append("</video>");
         return htmlBuffer.toString();
     }
 

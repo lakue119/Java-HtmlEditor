@@ -18,10 +18,6 @@ public class AREMovementMethod extends ArrowKeyMovementMethod {
 
     private AreClickStrategy mAreClickStrategy;
 
-    public AREMovementMethod() {
-        this(null);
-    }
-
     public AREMovementMethod(AreClickStrategy areClickStrategy) {
         this.mAreClickStrategy = areClickStrategy;
     }
@@ -44,12 +40,6 @@ public class AREMovementMethod extends ArrowKeyMovementMethod {
 
     @Override
     public boolean onTouchEvent(TextView widget, Spannable buffer, MotionEvent event) {
-        // Supports android.text.method.LinkMovementMethod.onTouchEvent(TextView, Spannable, MotionEvent)'s
-        // clickable event. So post all these codes to here and comment out "Selection.removeSelection(buffer);"
-        // because this has extended ArrowKeyMovementMethod which has supported Selection text.
-        //
-        // So, it is forbidden modifying the bellow codes!
-        // ----------- Last modified by Songhui on 2017-7-14
         int action = event.getAction();
 
         if (action == MotionEvent.ACTION_UP) {
@@ -81,14 +71,7 @@ public class AREMovementMethod extends ArrowKeyMovementMethod {
 
                 return true;
             }
-            /*else {
-                Selection.removeSelection(buffer);
-            }*/
         }
         return super.onTouchEvent(widget, buffer, event);
-    }
-
-    public void setClickStrategy(AreClickStrategy areClickStrategy) {
-        this.mAreClickStrategy = areClickStrategy;
     }
 }

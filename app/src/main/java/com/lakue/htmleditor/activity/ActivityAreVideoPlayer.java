@@ -51,7 +51,6 @@ public class ActivityAreVideoPlayer extends AppCompatActivity {
     private final Runnable mShowPart2Runnable = new Runnable() {
         @Override
         public void run() {
-            // Delayed display of UI elements
             ActionBar actionBar = getSupportActionBar();
             if (actionBar != null) {
                 actionBar.show();
@@ -117,7 +116,6 @@ public class ActivityAreVideoPlayer extends AppCompatActivity {
         mIntent = getIntent();
         mUri = mIntent.getData();
 
-        // Set up the user interaction to manually show or hide the system UI.
         mVideoView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,9 +125,6 @@ public class ActivityAreVideoPlayer extends AppCompatActivity {
         mVideoView.setVideoURI(mUri);
         mVideoView.start();
 
-        // Upon interacting with UI controls, delay any scheduled hide()
-        // operations to prevent the jarring behavior of controls going away
-        // while interacting with the UI.
         mAttachVideoButton = findViewById(R.id.are_btn_attach_video);
         mAttachVideoButton.setOnTouchListener(mDelayHideTouchListener);
     }

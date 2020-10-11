@@ -80,87 +80,21 @@ public class Html {
         public Drawable getDrawable(String source);
     }
 
-    /**
-     * Is notified when HTML tags are encountered that the parser does
-     * not know how to interpret.
-     */
     public static interface TagHandler {
-        /**
-         * This method will be called whenn the HTML parser encounters
-         * a tag that it does not know how to interpret.
-         */
         public void handleTag(boolean opening, String tag,
                               Editable output, XMLReader xmlReader);
     }
 
-    /**
-     * Option for {@link #toHtml(Spanned, int)}: Wrap consecutive lines of text delimited by '\n'
-     * inside &lt;p&gt; elements. {@link BulletSpan}s are ignored.
-     */
     public static final int TO_HTML_PARAGRAPH_LINES_CONSECUTIVE = 0x00000000;
-
-    /**
-     * Option for {@link #toHtml(Spanned, int)}: Wrap each line of text delimited by '\n' inside a
-     * &lt;p&gt; or a &lt;li&gt; element. This allows {@link ParagraphStyle}s attached to be
-     * encoded as CSS styles within the corresponding &lt;p&gt; or &lt;li&gt; element.
-     */
     public static final int TO_HTML_PARAGRAPH_LINES_INDIVIDUAL = 0x00000001;
-
-    /**
-     * Flag indicating that texts inside &lt;p&gt; elements will be separated from other texts with
-     * one newline character by default.
-     */
     public static final int FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH = 0x00000001;
-
-    /**
-     * Flag indicating that texts inside &lt;h1&gt;~&lt;h6&gt; elements will be separated from
-     * other texts with one newline character by default.
-     */
     public static final int FROM_HTML_SEPARATOR_LINE_BREAK_HEADING = 0x00000002;
-
-    /**
-     * Flag indicating that texts inside &lt;li&gt; elements will be separated from other texts
-     * with one newline character by default.
-     */
     public static final int FROM_HTML_SEPARATOR_LINE_BREAK_LIST_ITEM = 0x00000004;
-
-    /**
-     * Flag indicating that texts inside &lt;ul&gt; elements will be separated from other texts
-     * with one newline character by default.
-     */
     public static final int FROM_HTML_SEPARATOR_LINE_BREAK_LIST = 0x00000008;
-
-    /**
-     * Flag indicating that texts inside &lt;div&gt; elements will be separated from other texts
-     * with one newline character by default.
-     */
     public static final int FROM_HTML_SEPARATOR_LINE_BREAK_DIV = 0x00000010;
-
-    /**
-     * Flag indicating that texts inside &lt;blockquote&gt; elements will be separated from other
-     * texts with one newline character by default.
-     */
     public static final int FROM_HTML_SEPARATOR_LINE_BREAK_BLOCKQUOTE = 0x00000020;
-
-    /**
-     * Flag indicating that CSS color values should be used instead of those defined in
-     * {@link Color}.
-     */
     public static final int FROM_HTML_OPTION_USE_CSS_COLORS = 0x00000100;
-
-    /**
-     * Flags for {@link #fromHtml(String, int, ImageGetter, TagHandler)}: Separate block-level
-     * elements with blank lines (two newline characters) in between. This is the legacy behavior
-     * prior to N.
-     */
     public static final int FROM_HTML_MODE_LEGACY = 0x00000000;
-
-    /**
-     * Flags for {@link #fromHtml(String, int, ImageGetter, TagHandler)}: Separate block-level
-     * elements with line breaks (single newline character) in between. This inverts the
-     * {@link Spanned} to HTML string conversion done with the option
-     * {@link #TO_HTML_PARAGRAPH_LINES_INDIVIDUAL}.
-     */
     public static final int FROM_HTML_MODE_COMPACT =
             FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH
                     | FROM_HTML_SEPARATOR_LINE_BREAK_HEADING
@@ -169,63 +103,28 @@ public class Html {
                     | FROM_HTML_SEPARATOR_LINE_BREAK_DIV
                     | FROM_HTML_SEPARATOR_LINE_BREAK_BLOCKQUOTE;
 
-    /**
-     * The bit which indicates if lines delimited by '\n' will be grouped into &lt;p&gt; elements.
-     */
     private static final int TO_HTML_PARAGRAPH_FLAG = 0x00000001;
 
     private Html() { }
 
-    /**
-     * Returns displayable styled text from the provided HTML string with the legacy flags
-     * {@link #FROM_HTML_MODE_LEGACY}.
-     *
-     * @deprecated use {@link #fromHtml(String, int)} instead.
-     */
     @Deprecated
     public static Spanned fromHtml(String source) {
         return fromHtml(source, FROM_HTML_MODE_LEGACY, null, null);
     }
 
-    /**
-     * Returns displayable styled text from the provided HTML string. Any &lt;img&gt; tags in the
-     * HTML will display as a generic replacement image which your program can then go through and
-     * replace with real images.
-     *
-     * <p>This uses TagSoup to handle real HTML, including all of the brokenness found in the wild.
-     */
     public static Spanned fromHtml(String source, int flags) {
         return fromHtml(source, flags, null, null);
     }
 
-    /**
-     * Lazy initialization holder for HTML parser. This class will
-     * a) be preloaded by the zygote, or b) not loaded until absolutely
-     * necessary.
-     */
     private static class HtmlParser {
         private static final HTMLSchema schema = new HTMLSchema();
     }
 
-    /**
-     * Returns displayable styled text from the provided HTML string with the legacy flags
-     * {@link #FROM_HTML_MODE_LEGACY}.
-     *
-     * @deprecated use {@link #fromHtml(String, int, ImageGetter, TagHandler)} instead.
-     */
     @Deprecated
     public static Spanned fromHtml(String source, ImageGetter imageGetter, TagHandler tagHandler) {
         return fromHtml(source, FROM_HTML_MODE_LEGACY, imageGetter, tagHandler);
     }
 
-    /**
-     * Returns displayable styled text from the provided HTML string. Any &lt;img&gt; tags in the
-     * HTML will use the specified ImageGetter to request a representation of the image (use null
-     * if you don't want this) and the specified TagHandler to handle unknown tags (specify null if
-     * you don't want this).
-     *
-     * <p>This uses TagSoup to handle real HTML, including all of the brokenness found in the wild.
-     */
     public static Spanned fromHtml(String source, int flags, ImageGetter imageGetter,
                                    TagHandler tagHandler) {
         Parser parser = new Parser();
@@ -244,33 +143,17 @@ public class Html {
         return converter.convert();
     }
 
-    /**
-     * @deprecated use {@link #toHtml(Spanned, int)} instead.
-     */
     @Deprecated
     public static String toHtml(Spanned text) {
         return toHtml(text, TO_HTML_PARAGRAPH_LINES_CONSECUTIVE);
     }
 
-    /**
-     * Returns an HTML representation of the provided Spanned text. A best effort is
-     * made to add HTML tags corresponding to spans. Also note that HTML metacharacters
-     * (such as "&lt;" and "&amp;") within the input text are escaped.
-     *
-     * @param text input text to convert
-     * @param option one of {@link #TO_HTML_PARAGRAPH_LINES_CONSECUTIVE} or
-     *     {@link #TO_HTML_PARAGRAPH_LINES_INDIVIDUAL}
-     * @return string containing input converted to HTML
-     */
     public static String toHtml(Spanned text, int option) {
         StringBuilder out = new StringBuilder();
         withinHtml(out, text, option);
         return out.toString();
     }
 
-    /**
-     * Returns an HTML escaped representation of the given plain text.
-     */
     public static String escapeHtml(CharSequence text) {
         StringBuilder out = new StringBuilder();
         withinStyle(out, text, 0, text.length());
@@ -342,22 +225,6 @@ public class Html {
     }
 
     private static String getTextDirection(Spanned text, int start, int end) {
-//        final int len = end - start;
-//        final byte[] levels = ArrayUtils.newUnpaddedByteArray(len);
-//        final char[] buffer = TextUtils.obtain(len);
-//        TextUtils.getChars(text, start, end, buffer, 0);
-//
-//        int paraDir = AndroidBidi.bidi(Layout.DIR_REQUEST_DEFAULT_LTR, buffer, levels, len,
-//                false /* no info */);
-//    	int paraDir = Layout.DIR_LEFT_TO_RIGHT;
-//
-//        switch (paraDir) {
-//          case Layout.DIR_RIGHT_TO_LEFT:
-//            return "<p dir=\"rtl\">";
-//          case Layout.DIR_LEFT_TO_RIGHT:
-//          default:
-//            return "<p>";
-//        }
         return "";
     }
 
@@ -367,17 +234,12 @@ public class Html {
         String textAlign = null;
 
         if (forceNoVerticalMargin) {
-            // chinalwb:
-            // Do not set margin for p tag for now.
-            // margin = "margin-top:0; margin-bottom:0;";
         }
         if (includeTextAlign) {
             final AlignmentSpan[] alignmentSpans = text.getSpans(start, end, AlignmentSpan.class);
 
-            // Only use the last AlignmentSpan with flag SPAN_PARAGRAPH
             for (int i = alignmentSpans.length - 1; i >= 0; i--) {
                 AlignmentSpan s = alignmentSpans[i];
-                //if ((text.getSpanFlags(s) & Spanned.SPAN_PARAGRAPH) == Spanned.SPAN_PARAGRAPH) {
                 final Layout.Alignment alignment = s.getAlignment();
                 if (alignment == Layout.Alignment.ALIGN_NORMAL) {
                     textAlign = "text-align:start;";
@@ -386,8 +248,6 @@ public class Html {
                 } else if (alignment == Layout.Alignment.ALIGN_OPPOSITE) {
                     textAlign = "text-align:end;";
                 }
-                // break;
-                // }
             }
         }
 
@@ -429,7 +289,6 @@ public class Html {
 
             if (next == i) {
                 if (isInList) {
-                    // Current paragraph is no longer a list item; close the previously opened list
                     isInList = false;
                     out.append("</" + listType + ">\n");
                 }
@@ -438,20 +297,13 @@ public class Html {
                 boolean isListItem = false;
                 ParagraphStyle[] paragraphStyles = text.getSpans(i, next, ParagraphStyle.class);
                 for (ParagraphStyle paragraphStyle : paragraphStyles) {
-                    final int spanFlags = text.getSpanFlags(paragraphStyle);
                     if (
-                        // (spanFlags & Spanned.SPAN_PARAGRAPH) == Spanned.SPAN_PARAGRAPH
-                        // &&
                             paragraphStyle instanceof AreListSpan) {
 
                         Util.log("paragraphStyle == " + paragraphStyle.toString());
                         boolean closed = false;
 
                         if (closed) {
-                            // If the list item has been closed,
-                            // It will no longer be in list.
-                            // So set it as false then the following
-                            // logic can start a new list item again
                             isInList = false;
                         }
 
@@ -461,7 +313,6 @@ public class Html {
                 }
 
                 if (isListItem && !isInList) {
-                    // Current paragraph is the first item in a list
                     isInList = true;
                     out.append("<" + listType)
                             .append(getTextStyles(text, i, next, true, false))
@@ -469,7 +320,6 @@ public class Html {
                 }
 
                 if (isInList && !isListItem) {
-                    // Current paragraph is no longer a list item; close the previously opened list
                     isInList = false;
                     out.append("</" + listType + ">\n");
                 }
@@ -494,15 +344,6 @@ public class Html {
 
             next++;
         }
-    }
-
-    private static boolean checkToClosePreviousList(StringBuilder out, String srcListType, String targetListType) {
-        Util.log("src list type = " + srcListType + ", target list type == " + targetListType);
-        if (!srcListType.equals(targetListType) && !TextUtils.isEmpty(srcListType)) {
-            out.append("</" + srcListType + ">");
-            return true;
-        }
-        return false;
     }
 
     private static void withinBlockquoteConsecutive(StringBuilder out, Spanned text, int start,
@@ -595,16 +436,12 @@ public class Html {
 //                    out.append("<img src=\"");
 //                    out.append(((ImageSpan) style[j]).getSource());
 //                    out.append("\" />");
-
-                    // Don't output the dummy character underlying the image.
                     i = next;
                 }
                 if (style[j] instanceof AbsoluteSizeSpan) {
                     AbsoluteSizeSpan s = ((AbsoluteSizeSpan) style[j]);
                     float sizeDip = s.getSize();
                     if (!s.getDip()) {
-                        // Application application = ActivityThread.currentApplication();
-                        // float density = application.getResources().getDisplayMetrics().density;
                         float density = 1.5f;
                         sizeDip /= density;
                     }
@@ -737,9 +574,6 @@ class HtmlToSpannedConverter implements ContentHandler {
     private static Pattern sBackgroundColorPattern;
     private static Pattern sTextDecorationPattern;
 
-    /**
-     * Name-value mapping of HTML/CSS colors which have different values in {@link Color}.
-     */
     private static final Map<String, Integer> sColorMap;
 
     static {
@@ -791,20 +625,16 @@ class HtmlToSpannedConverter implements ContentHandler {
         try {
             mReader.parse(new InputSource(new StringReader(mSource)));
         } catch (IOException e) {
-            // We are reading from a string. There should not be IO problems.
             throw new RuntimeException(e);
         } catch (SAXException e) {
-            // TagSoup doesn't throw parse exceptions.
             throw new RuntimeException(e);
         }
 
-        // Fix flags and range for paragraph-type markup.
         Object[] obj = mSpannableStringBuilder.getSpans(0, mSpannableStringBuilder.length(), ParagraphStyle.class);
         for (int i = 0; i < obj.length; i++) {
             int start = mSpannableStringBuilder.getSpanStart(obj[i]);
             int end = mSpannableStringBuilder.getSpanEnd(obj[i]);
 
-            // If the last line of the range is blank, back off by one.
             if (end - 2 >= 0) {
                 if (mSpannableStringBuilder.charAt(end - 1) == '\n' &&
                         mSpannableStringBuilder.charAt(end - 2) == '\n') {
@@ -834,8 +664,6 @@ class HtmlToSpannedConverter implements ContentHandler {
 
     private void handleStartTag(String tag, Attributes attributes) {
         if (tag.equalsIgnoreCase("br")) {
-            // We don't need to handle this. TagSoup will ensure that there's a </br> for each <br>
-            // so we can safely emit the linebreaks when we handle the close tag.
         } else if (tag.equalsIgnoreCase("p")) {
             startBlockElement(mSpannableStringBuilder, attributes, getMarginParagraph());
             startCssStyle(mSpannableStringBuilder, attributes);
@@ -978,12 +806,6 @@ class HtmlToSpannedConverter implements ContentHandler {
         return getMargin(Html.FROM_HTML_SEPARATOR_LINE_BREAK_BLOCKQUOTE);
     }
 
-    /**
-     * Returns the minimum number of newline characters needed before and after a given block-level
-     * element.
-     *
-     * @param flag the corresponding option flag defined in {@link Html} of a block-level element
-     */
     private int getMargin(int flag) {
         if ((flag & mFlags) != 0) {
             return 1;
@@ -1124,10 +946,6 @@ class HtmlToSpannedConverter implements ContentHandler {
     }
 
     private static <T> T getLast(Spanned text, Class<T> kind) {
-        /*
-         * This knows that the last returned object from getSpans()
-         * will be the most recently added.
-         */
         T[] objs = text.getSpans(0, text.length(), kind);
 
         if (objs.length == 0) {
@@ -1215,8 +1033,6 @@ class HtmlToSpannedConverter implements ContentHandler {
             } else if (src.startsWith("http")) {
                 imageSpan = new AreImageSpan(sContext, d, src);
             } else {
-                // content://com.android.providers.media.documents/document/image%3A33
-                // Such uri cannot be loaded from AreImageGetter.
                 imageSpan = new AreImageSpan(sContext, Uri.parse(src));
             }
         }
@@ -1254,7 +1070,7 @@ class HtmlToSpannedConverter implements ContentHandler {
         Drawable d;
         ImageSpan imageSpan;
 
-        Bitmap play = BitmapFactory.decodeResource(sContext.getResources(), R.drawable.round_play_circle_filled_black_36);
+        Bitmap play = BitmapFactory.decodeResource(sContext.getResources(), R.drawable.round_play_circle_filled_black_48);
         Bitmap video = thumb == null ? play : Util.mergeBitmaps(thumb, play);
         imageSpan = new AreVideoSpan(sContext, video, uriPath, videoUrl);
         int len = text.length();
@@ -1294,17 +1110,6 @@ class HtmlToSpannedConverter implements ContentHandler {
         }
     }
 
-//    private int getHtmlColor(String color) {
-//        if ((mFlags & Html.FROM_HTML_OPTION_USE_CSS_COLORS)
-//                == Html.FROM_HTML_OPTION_USE_CSS_COLORS) {
-//            Integer i = sColorMap.get(color.toLowerCase(Locale.US));
-//            if (i != null) {
-//                return i;
-//            }
-//        }
-//        return Color.getHtmlColor(color);
-//    }
-
     public void setDocumentLocator(Locator locator) {
     }
 
@@ -1331,11 +1136,6 @@ class HtmlToSpannedConverter implements ContentHandler {
 
     public void characters(char ch[], int start, int length) throws SAXException {
         StringBuilder sb = new StringBuilder();
-
-        /*
-         * Ignore whitespace that immediately follows other whitespace;
-         * newlines count as spaces.
-         */
 
         for (int i = 0; i < length; i++) {
             char c = ch[i + start];
@@ -1530,13 +1330,6 @@ class HtmlToSpannedConverter implements ContentHandler {
         return map;
     }
 
-    /**
-     * Converts an HTML color (named or numeric) to an integer RGB value.
-     *
-     * @param color Non-null color string.
-     * @return A color value, or {@code -1} if the color string could not be
-     * interpreted.
-     */
     private static int getHtmlColor(String color) {
         Integer i = COLORS.get(color.toLowerCase());
         if (i != null) {
@@ -1550,12 +1343,6 @@ class HtmlToSpannedConverter implements ContentHandler {
         }
     }
 
-    /**
-     * Returns the font size int value.
-     *
-     * @param fontSizePx like 32px
-     * @return
-     */
     private static int getFontSize(String fontSizePx) {
         int pxIndex = fontSizePx.indexOf("px");
         String fontSizeStr = fontSizePx.substring(0, pxIndex);

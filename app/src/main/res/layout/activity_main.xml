@@ -21,16 +21,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/ivClose"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="20dp"
-                    android:src="@drawable/round_keyboard_arrow_left_black_36"
-                    tools:ignore="RtlCompat" />
-
-
                 <TextView
                     android:id="@+id/tv_upload_title"
                     style="@style/Style_Nanum_32"
@@ -38,7 +28,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_centerVertical="true"
-                    android:text="블로그"
+                    android:text="글 작성"
                     android:textColor="@color/colorBlack" />
 
                 <TextView

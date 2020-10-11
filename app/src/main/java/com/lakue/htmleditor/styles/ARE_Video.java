@@ -52,9 +52,6 @@ public class ARE_Video implements IARE_Style {
 
     private static int sWidth = 0;
 
-    /**
-     * @param imageView the emoji image view
-     */
     public ARE_Video(ImageView imageView) {
         this.mInsertVideoImageView = imageView;
         this.mContext = imageView.getContext();
@@ -74,11 +71,8 @@ public class ARE_Video implements IARE_Style {
                 openVideoChooser();
             }
         });
-    } // #End of setListenerForImageView(..)
+    }
 
-    /**
-     * Open system image chooser page.
-     */
     private void openVideoChooser() {
         VideoStrategy videoStrategy = mEditText.getVideoStrategy();
         ActivityAreVideoPlayer.sVideoStrategy = videoStrategy;
@@ -88,10 +82,6 @@ public class ARE_Video implements IARE_Style {
         ((Activity) this.mContext).startActivityForResult(intent, ARE_Toolbar.REQ_VIDEO_CHOOSE);
     }
 
-
-    /**
-     *
-     */
     public void insertVideo(final Uri uri, final String videoUrl) {
 //        this.mEditText.useSoftwareLayerOnAndroid8();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
@@ -110,7 +100,7 @@ public class ARE_Video implements IARE_Style {
         thumb = Util.scaleBitmapToFitWidth(thumb, sWidth);
 
         Bitmap play = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.youtube);
-//        Bitmap resized = Bitmap.createScaledBitmap(play, 150, 150, true);
+//        Bitmap resized = Bitmap.createScaledBitmap(p, 150, 150, true);
         Bitmap video = Util.mergeBitmaps(thumb, play);
         Bitmap roundImg = Config.getRoundedCornerBitmap(video,mContext);
         AreVideoSpan videoSpan = new AreVideoSpan(mContext, roundImg, path, videoUrl);
@@ -131,11 +121,6 @@ public class ARE_Video implements IARE_Style {
         return bitmap;
     }
 
-    /**
-     * 根据图片的Uri获取图片的绝对路径(适配多种API)
-     *
-     * @return 如果Uri对应的图片存在, 那么返回该图片的绝对路径, 否则返回null
-     */
     public static String getRealPathFromUri(Context context, Uri uri) {
         int sdkVersion = Build.VERSION.SDK_INT;
         if (sdkVersion < 11) return getRealPathFromUri_BelowApi11(context, uri);
@@ -143,9 +128,6 @@ public class ARE_Video implements IARE_Style {
         else return getRealPathFromUri_AboveApi19(context, uri);
     }
 
-    /**
-     * 适配api19以上,根据uri获取图片的绝对路径
-     */
     @TargetApi(Build.VERSION_CODES.KITKAT)
     private static String getRealPathFromUri_AboveApi19(Context context, Uri uri) {
         String filePath = null;
@@ -166,9 +148,6 @@ public class ARE_Video implements IARE_Style {
         return filePath;
     }
 
-    /**
-     * 适配api11-api18,根据uri获取图片的绝对路径
-     */
     private static String getRealPathFromUri_Api11To18(Context context, Uri uri) {
         String filePath = null;
         String[] projection = {MediaStore.Images.Media.DATA};
@@ -183,9 +162,6 @@ public class ARE_Video implements IARE_Style {
         return filePath;
     }
 
-    /**
-     * 适配api11以下(不包括api11),根据uri获取图片的绝对路径
-     */
     private static String getRealPathFromUri_BelowApi11(Context context, Uri uri) {
         String filePath = null;
         String[] projection = {MediaStore.Images.Media.DATA};
